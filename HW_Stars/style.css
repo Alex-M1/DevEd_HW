@@ -1,0 +1,96 @@
+.container{
+  max-width: 900px;
+  margin: 0 auto;
+}
+
+section{
+  text-align: center;
+}
+
+.out{
+  font-size: 20px;
+  line-height: 30px;
+  letter-spacing: 15px;
+}
+
+button{
+  cursor: pointer;
+}
+
+.figure-1{
+  width: 20px; 
+  height: 20px;
+  background: #000;
+}
+
+.figure-2{
+  width: 20px; 
+  height: 20px;
+  border:1px solid black;
+  box-sizing: border-box;
+}
+
+.figure-3{
+  width: 0; 
+  height: 0;
+  border-top: 20px solid black;
+  border-right: 20px solid transparent;
+}
+
+.figure-4{
+    width: 0; 
+    height: 0; 
+    border-bottom: 20px solid black;
+    border-right: 20px solid transparent;
+}
+.figure-5{
+  width: 0; 
+  height: 0;
+  border-bottom: 20px solid black;
+  border-left: 20px solid transparent;
+}
+
+.figure-6{
+  width: 0; 
+  height: 0;
+  border-top: 20px solid black;
+  border-left: 20px solid transparent;
+}
+
+.figure-7{
+  position: relative;
+  width: 20px;
+  height: 20px;
+}
+.figure-7::before{
+  content: '';
+  height: 20px;
+  position: absolute;
+  border: 1px solid black;
+  transform:rotate(45deg);
+  
+}
+.figure-7::after{
+  content: '';
+  height: 20px;
+  position: absolute;
+  border: 1px solid black;
+  transform:rotate(-45deg);
+  
+}
+
+.figure-8{
+  width: 0; 
+  height: 0;
+  border-left: 10px solid transparent;
+  border-right: 10px solid transparent;
+  border-top: 20px solid black;
+}
+
+.figure-9{
+  width: 0; 
+  height: 0;
+  border-left: 10px solid transparent;
+  border-right: 10px solid transparent;
+  border-bottom: 20px solid black;
+}
