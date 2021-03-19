@@ -1,7 +1,3 @@
-/*
- * Отрефакторить первый if в настройках
- */
-
 var forms = document.querySelectorAll('form')
 
 //game elements
@@ -33,7 +29,6 @@ for (var i = 0; i < forms.length; i++) {
     e.preventDefault()
   })
 }
-
 
 var attemptsCount = attempts
 generateBtn.addEventListener('click', function () {
@@ -72,16 +67,13 @@ settingBtn.addEventListener('click', function () {
     maxIptVal = maxNumberIpt.value,
     attemptsVal = attemptsIpt.value
 
-  if (+minIptVal > +maxIptVal || +minIptVal === +maxIptVal
-    || +minIptVal > maxNumber || +minIptVal === maxNumber
-    || minNumber > +maxIptVal || minNumber === +maxIptVal) {
-    return log.textContent = 'Минимальное число должно быть меньше'
+  if (+minIptVal > +maxIptVal
+    || +minIptVal > maxNumber
+    || minNumber > +maxIptVal) {
+    return log.textContent = 'Минимальное число должно быть меньше максимального'
   }
 
-
-  if (minIptVal) {
-    minNumber = +minIptVal
-  }
+  if (minIptVal) minNumber = +minIptVal
   if (maxIptVal) maxNumber = +maxIptVal
   if (attemptsVal) attempts = +attemptsVal
 
