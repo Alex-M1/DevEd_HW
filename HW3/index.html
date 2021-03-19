@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+  <div class="container">
+    <h1>Игра "Угадай число"</h1>
+    <p>Привет я загадал число от <span class="min-span">1</span> до <span class="max-span">100</span></p>
+    <p>попробуй угадать его за <span class="attempts-span">5</span> попыток</p>
+    <div class="game">
+      <form>
+        <input type="number" placeholder="Введите число" class="entered-number">
+        <div>
+          <button class="generate">Generate</button>
+          <button class="exit">Exit</button>
+        </div>
+        <div class="out"></div>
+      </form>
+
+      <form class="settings">
+        <input type="number" class="attempts">
+        <input type="number" class="min-number">
+        <input type="number" class="max-number">
+        <button class="settings-btn">Применить настройки</button>
+        <div class="log"></div>
+      </form>
+    </div>
+  </div>
+  <script src="script.js"></script>
+</body>
+
+</html>
