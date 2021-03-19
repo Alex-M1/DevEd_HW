@@ -1,3 +1,7 @@
+/*
+ * Отрефакторить первый if в настройках
+ */
+
 var forms = document.querySelectorAll('form')
 
 //game elements
@@ -35,17 +39,19 @@ var attemptsCount = attempts
 generateBtn.addEventListener('click', function () {
   var enterVal = +enteredNumber.value
   if (!enterVal) return
+
   attemptsCount--
+
   if (+enterVal > randomNumber) {
     out.textContent = 'Число меньше. Осталось попыток: ' + attemptsCount
   } else if (+enterVal < randomNumber) {
     out.textContent = 'Число больше. Осталось попыток: ' + attemptsCount
   } else if (+enterVal === randomNumber) {
     winOrLoose('win', attemptsCount)
-  } else if (attemptsCount === 0) {
+  }
+  if (attemptsCount === 0) {
     winOrLoose('loose', attemptsCount)
   }
-
   if (attemptsCount !== attempts) {
     this.textContent = 'Еще!'
     settingBtn.disabled = true
@@ -60,6 +66,7 @@ exit.addEventListener('click', function () {
   settingBtn.disabled = false
 })
 
+
 settingBtn.addEventListener('click', function () {
   var minIptVal = minNumberIpt.value,
     maxIptVal = maxNumberIpt.value,
@@ -70,6 +77,7 @@ settingBtn.addEventListener('click', function () {
     || minNumber > +maxIptVal || minNumber === +maxIptVal) {
     return log.textContent = 'Минимальное число должно быть меньше'
   }
+
 
   if (minIptVal) {
     minNumber = +minIptVal
@@ -105,11 +113,19 @@ function winOrLoose(result, count) {
   }
 }
 
-function noDot(e) {
-  if (e.key === '.' || e.key === ',' || +this.value > 15) e.preventDefault()
+function validSetting(e, max, min, elem) {
+  if (e.key === '.' || e.key === ',') e.preventDefault()
+  if (+(elem.value + e.key) > max) e.preventDefault()
+  if (+(elem.value + e.key) < min) e.preventDefault()
 }
 
-attemptsIpt.addEventListener('keypress', noDot)
-minNumberIpt.addEventListener('keypress', noDot)
-maxNumberIpt.addEventListener('keypress', noDot)
+attemptsIpt.addEventListener('keypress', function (e) {
+  validSetting(e, 15, 1, attemptsIpt)
+})
+minNumberIpt.addEventListener('keypress', function (e) {
+  validSetting(e, 198, 1, minNumberIpt)
+})
+maxNumberIpt.addEventListener('keypress', function (e) {
+  validSetting(e, 200, 1, maxNumberIpt)
+})
 
