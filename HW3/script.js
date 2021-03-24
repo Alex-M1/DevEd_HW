@@ -61,7 +61,6 @@ exit.addEventListener('click', function () {
   settingBtn.disabled = false
 })
 
-
 settingBtn.addEventListener('click', function () {
   var minIptVal = minNumberIpt.value,
     maxIptVal = maxNumberIpt.value,
@@ -87,7 +86,6 @@ settingBtn.addEventListener('click', function () {
   maxSpan.textContent = maxNumber
   attemptsSpan.textContent = attempts
 })
-
 
 function winOrLoose(result, count) {
   attemptsCount = attempts
@@ -120,4 +118,3 @@ minNumberIpt.addEventListener('keypress', function (e) {
 maxNumberIpt.addEventListener('keypress', function (e) {
   validSetting(e, 200, 1, maxNumberIpt)
 })
-

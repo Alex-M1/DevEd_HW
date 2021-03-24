@@ -46,6 +46,7 @@ h3{
   line-height: 1.5;
   transition: all 0.2s;
 }  
+
 .btn:hover{
   background-color: #004fd6;
 }
@@ -55,6 +56,7 @@ h3{
     border-color: #ea2e41;
     color: #fff;
 }
+
 .btn.exit:hover{
   background-color: #cc2d3d;
   color: #fff;
