@@ -21,8 +21,8 @@ function generateClickHandler() {
 
   if (minVal >= maxVal) {
     return out.innerHTML = "Минимальное число должно <br> быть меньше максимального!"
-  } else if (!minVal || !maxVal) {
-    return out.textContent = "Введите диапазон"
+  } else if (!minVal || !maxVal || minVal < 1) {
+    return out.textContent = "Введите диапазон <br/>от 1 до 100"
   } else if (!Number.isInteger(minVal) || !Number.isInteger(maxVal)) {
     return out.textContent = "Число должно быть целым"
   }
