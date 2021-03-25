@@ -21,6 +21,10 @@ function generateClickHandler() {
 
   if (minVal >= maxVal) {
     return out.innerHTML = "Минимальное число должно <br> быть меньше максимального!"
+  } else if (!minVal || !maxVal) {
+    return out.textContent = "Введите диапазон"
+  } else if (!Number.isInteger(minVal) || !Number.isInteger(maxVal)) {
+    return out.textContent = "Число должно быть целым"
   }
 
   out.textContent = 'Generate number: ' + randNum
@@ -86,3 +90,4 @@ function binarySearch(value, list) {
   }
   return position
 }
+

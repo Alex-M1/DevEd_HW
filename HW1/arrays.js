@@ -169,6 +169,12 @@ function selection(arr) {
   }
   return arr
 }
+
+// [4,3,1,2,3,4]
 // console.log(selection(arr2))
 // Отсортировать массив (Quick, Merge, Shell, Heap)
 
+let a = 'adsadsadasd фвфвфывф'.split('')
+  .map(el => el.split('')
+    .map(elEL => elEl.sort())).join('')
+console.log(a)
