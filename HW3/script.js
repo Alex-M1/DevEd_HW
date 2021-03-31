@@ -4,7 +4,7 @@ var forms = document.querySelectorAll('form')
 var enteredNumber = document.querySelector('.entered-number'),
   generateBtn = document.querySelector('.generate'),
   exit = document.querySelector('.exit'),
-  out = document.querySelector('.out')
+  out = document.querySelector('.game-field__out')
 
 //settings elements
 var attemptsIpt = document.querySelector('.attempts'),

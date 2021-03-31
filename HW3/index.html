@@ -11,31 +11,33 @@
 
 <body>
   <div class="container">
-    <main>
-      <h1>Игра "Угадай число"</h1>
-      <p>Привет! Я загадал число от <span class="min-span">1</span> до <span class="max-span">100</span></p>
-      <p>попробуй угадать его за <span class="attempts-span">5</span> попыток</p>
-      <div class="game">
-        <form>
-          <input type="number" placeholder="Введите число" class="entered-number">
-          <div>
-            <button class="btn generate">Generate</button>
-            <button class="btn exit">Exit</button>
-          </div>
-          <div class="out"></div>
-        </form>
-      </div>
+    <main class="game">
+      <h1 class="game__name">Игра "Угадай число"</h1>
+      <p class="game__description">
+        Привет! Я загадал число от <span class="min-span">1</span> до <span class="max-span">100</span>
+      </p>
+      <p class="game__description">попробуй угадать его за <span class="attempts-span">5</span> попыток</p>
+
+      <form class="game-field">
+        <input type="number" placeholder="Введите число" class="game-field__number entered-number">
+        <div class="btn-group">
+          <button class="btn btn-group__btn generate">Generate</button>
+          <button class="btn btn-group__btn exit">Exit</button>
+        </div>
+        <div class="game-field__out"></div>
+      </form>
+
       <form class="settings">
-        <h3>Настройки</h3>
+        <h3 class="settings__name">Настройки</h3>
 
-        <span>Кол-во попыток от 1 до 15:</span>
-        <input type="number" class="attempts">
+        <span class="settings__description">Кол-во попыток от 1 до 15:</span>
+        <input type="number" class="settings__attempts attempts">
 
-        <span>Минимальное число от 1 до 200:</span>
-        <input type="number" class="min-number">
+        <span class="settings__description">Минимальное число от 1 до 200:</span>
+        <input type="number" class="setting__ipt min-number">
 
-        <span>Максимальное число число от 1 до 200:</span>
-        <input type="number" class="max-number">
+        <span class="settings__description">Максимальное число число от 1 до 200:</span>
+        <input type="number" class="setting__ipt max-number">
 
         <button class="btn settings-btn">Применить настройки</button>
         <div class="log"></div>

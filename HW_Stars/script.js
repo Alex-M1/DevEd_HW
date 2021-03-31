@@ -42,7 +42,7 @@ buttons[3].addEventListener('click', function () {
   for (var i = 0; i < 7; i++) {
     for (var k = 0; k < 7; k++) {
       if (i === 6) figure += '*'
-      else if (k === 0 || k === 0 + i) figure += '*'
+      else if (k === 0 || k === i) figure += '*'
       else figure += ' '
     }
     figure += '<br>'
@@ -69,7 +69,7 @@ buttons[5].addEventListener('click', function () {
   for (var i = 0; i < 7; i++) {
     for (var k = 0; k < 7; k++) {
       if (i === 0) figure += '*'
-      else if (k === 6 || k === 0 + i) figure += '*'
+      else if (k === 6 || k === i) figure += '*'
       else figure += ' '
     }
     figure += '<br>'
@@ -81,7 +81,7 @@ buttons[6].addEventListener('click', function () {
   var figure = ''
   for (var i = 0; i < 7; i++) {
     for (var k = 0; k < 7; k++) {
-      if (i === 0 + k || i === 6 - k) figure += '*'
+      if (i === k || i === 6 - k) figure += '*'
       else figure += ' '
     }
     figure += '<br>'
@@ -95,7 +95,7 @@ buttons[7].addEventListener('click', function () {
     for (var k = 0; k < 7; k++) {
       if (i > 3) figure += ''
       else if (i === 0) figure += '*'
-      else if (i === 0 + k || i === 6 - k) figure += '*'
+      else if (i === k || i === 6 - k) figure += '*'
       else figure += ' '
     }
     figure += '<br>'
@@ -109,10 +109,13 @@ buttons[8].addEventListener('click', function () {
     for (var k = 0; k < 7; k++) {
       if (i < 3) figure += ''
       else if (i === 6) figure += '*'
-      else if (i === 0 + k || i === 6 - k) figure += '*'
+      else if (i === k || i === 6 - k) figure += '*'
       else figure += ' '
     }
     figure += '<br>'
   }
   out.innerHTML = figure
 })
+
+
+
