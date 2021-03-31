@@ -3,6 +3,7 @@
 // EX-1.1 Если а – четное посчитать а*б, иначе а+б
 
 function someCalc(a, b) {
+  if (typeof a !== 'number' || typeof b !== 'number') return false
   return a % 2 === 0 ? a * b : a + b
 }
 
@@ -24,6 +25,10 @@ function getCoordQuarter(x, y) {
 //EX 1.3 Найти суммы только положительных из трех чисел
 
 function sumPositiveNumbers(a, b, c) {
+  if (typeof a !== 'number' || typeof b !== 'number' || typeof c !== 'number') {
+    return false
+  }
+
   if (a >= 0 && b >= 0 && c >= 0) return a + b + c
   else if (a < 0 && b >= 0 && c >= 0) return b + c
   else if (a > 0 && b <= 0 && c >= 0) return a + c
@@ -34,6 +39,9 @@ function sumPositiveNumbers(a, b, c) {
 //EX 1.4 Посчитать выражение (макс(а*б*с, а+б+с))+3
 
 function maxCalc(a, b, c) {
+  if (typeof a !== 'number' || typeof b !== 'number' || typeof c !== 'number') {
+    return false
+  }
   var sum = a + b + c
   var mult = a * b * c
   return sum > mult ? sum + 3 : mult + 3
@@ -56,4 +64,8 @@ function getRate(rate) {
   else if (rate >= 75 && rate <= 89) return 'B'
   else if (rate >= 90 && rate <= 100) return 'A'
   else return 'Введите число от 0 до 100'
+}
+
+module.exports = {
+  getRate, maxCalc, sumPositiveNumbers, getCoordQuarter, someCalc
 }

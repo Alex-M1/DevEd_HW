@@ -60,16 +60,16 @@ let arr = [{
 
 // 4. Принимая строку, ваша функция должна вернуть обьект, в котором ключи – символы строки, значение – количество повторений символов в строке
 function countCharacters(string) {
-  var newObj = {};
+  var newObj = {}
   for (var i = 0; i < string.length; i++) {
     if (
       (string.charCodeAt(i) >= 48 && string.charCodeAt(i) <= 57) ||
       string[i].toUpperCase() !== string[i].toLowerCase()
     ) {
-      newObj[string[i]] = newObj[string[i]] ? newObj[string[i]] + 1 : 1;
+      newObj[string[i]] = newObj[string[i]] ? newObj[string[i]] + 1 : 1
     }
   }
-  return newObj;
+  return newObj
 }
 
 // console.log(countCharacters('a 2ab !d’'))  // should return {s: 1, p: 1, a: 1, r: 2, o: 1, w: 1}

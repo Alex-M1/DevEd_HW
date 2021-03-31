@@ -15,6 +15,9 @@ function sumEven() {
 
 //EX 2.2 Проверить простое ли число? (число называется простым, если оно делится только само на себя и на 1)
 function isPrimeNumber(value) {
+  if (typeof value !== 'number') {
+    return 'Введите число'
+  }
   if (value <= 1) return false
   for (var i = 2; i < value; i++) {
     if (value % i === 0) return false
@@ -24,6 +27,9 @@ function isPrimeNumber(value) {
 
 //EX 2.3 Найти корень натурального числа с точностью до целого (рассмотреть вариант последовательного подбора и метод бинарного поиска)
 function sqrt(num) {
+  if (typeof num !== 'number') {
+    return 'Введите число'
+  }
   for (let i = 0; i < num; i++) {
     if (i * i === num) {
       return i
@@ -35,6 +41,9 @@ function sqrtBin(num) {
   var up = num
   var down = 0
   var mid = null
+  if (typeof num !== 'number') {
+    return 'Введите число'
+  }
   while (up - down > 1) {
     mid = Math.floor((up + down) / 2)
     if (mid * mid <= num) down = mid
@@ -45,6 +54,9 @@ function sqrtBin(num) {
 
 //EX 2.4 Вычислить факториал числа n. n! = 1*2*…*n-1*n
 function factorial(num) {
+  if (typeof num !== 'number') {
+    return 'Введите число'
+  }
   var factorial = 1
   for (var i = 1; i < num + 1; i++) {
     factorial *= i
@@ -56,18 +68,25 @@ function factorial(num) {
 function sumOfNumbers(num) {
   var sum = 0,
     tmp = 0
+  if (typeof num !== 'number') {
+    return 'Введите число'
+  }
   while (num) {
     tmp = num % 10
     num = (num - tmp) / 10
     sum += tmp
   }
-  return sum
+  return Math.abs(sum)
 }
 
 //EX 2.6 Вывести число, которое является зеркальным отображением последовательности цифр заданного числа, например, задано число 123, вывести 321.
-function f26(num) {
+function mirrorNum(num) {
   var result = '',
     tmp = ''
+  if (typeof num !== 'number') {
+    return 'Введите число'
+  }
+  num = Math.abs(num)
   while (num) {
     tmp = (num % 10).toString()
     result += tmp
@@ -75,3 +94,13 @@ function f26(num) {
   }
   return +result
 }
+
+module.exports = {
+  sumEven, isPrimeNumber, sqrt, sqrtBin, factorial, sumOfNumbers, mirrorNum
+}
+
+
+
+
+
+
