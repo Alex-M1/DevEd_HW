@@ -17,21 +17,18 @@ function getCookingTime(eggsAmount) {
 // 2.Получая массив чисел. Все они либо нечетные, либо четные, кроме одного. Тебе нужно его найти.
 
 function getNumber(array) {
-  var count = 0
   var even = [],
     odd = []
   for (var i = 0; i < array.length; i++) {
     if (array[i] % 2 === 0) even.push(array[i])
     else odd.push(array[i])
-    count++
     if (even.length !== 0 && odd.length !== 0 && even.length !== odd.length) {
-      console.log(count)
       return even.length > odd.length ? odd[0] : even[0]
     }
   }
 }
-// console.log(getNumber([5, 4, 7, 9, 15, 19, 777, -15, -11, 3, 9, 23, -17])) //returns 4
-// getNumber([0, 2, 8, -4, 0, -122, 13, -4, 28, 12]) //returns 13
+console.log(getNumber([5, 4, 7, 9, 15, 19, 777, -15, -11, 3, 9, 23, -17])) //returns 4
+console.log(getNumber([0, 2, 8, -4, 0, -122, 13, -4, 28, 12]))  //returns 13
 
 // 3. Принимая массив объектов и случайную строку. У объектов может быть ключ: «title» с разными значениями. Создайте алгоритм, который фильтрует массив, заданный как первый параметр, и возвращает массив объектов, которые содержат в своих заголовках заданную строку в качестве второго параметра (без учета регистра).
 
@@ -99,4 +96,6 @@ function getNextPalindrome(number) {
 // getNextPalindrome(132) // returns 141
 // getNextPalindrome(888) // returns 898
 // getNextPalindrome(999) // returns 1001
+
+
 

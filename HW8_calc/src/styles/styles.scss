@@ -1,0 +1,57 @@
+$leftBtn : #fe9e09;
+$mainBtn : #343434;
+$secondaryBtn : #a5a5a5;
+
+*{
+  margin: 0;
+  padding: 0;
+  color:#fff;
+}
+
+body{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 80vh;
+}
+
+
+.left-btn{
+  background: $leftBtn;
+}
+
+.main-btn{
+  background: $mainBtn;
+}
+
+.secondary-btn{
+  background: $secondaryBtn;
+}
+
+.calculator{
+  border-radius: 10px;
+  padding: 20px 10px;
+  background: #000;
+  &__display{
+    font-size: 3rem;
+    text-align: right;
+    padding: 10px;
+  }
+  &__buttons{
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+  }
+  &__btn{
+    width: 60px;
+    height: 60px;
+    border-radius: 100%;
+    border: none;
+    outline: none;
+    font-size: 1.2rem;
+    margin: 2px;
+    cursor: pointer;
+    &:hover{
+      opacity: 0.8;
+    }
+  }
+}
