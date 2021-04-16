@@ -54,6 +54,7 @@ resetBtn.addEventListener('click', function () {
   lastNums = []
   minNumIpt.readOnly = false
   maxNumIpt.readOnly = false
+  out.innerHTML = ''
 })
 
 function insertionSort(inputArr) {
