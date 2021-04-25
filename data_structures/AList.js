@@ -201,33 +201,112 @@ AList.prototype.reverse = function () {
   if (this.size === 0) {
     throw new Error(ERRORS.empty);
   }
-  var newArr = [],
-    emptyArr = Array(this.array.length);
-
+  var newArray = [];
+  var undef = 0;
   for (var i = this.array.length - 1; i >= 0; i--) {
-    if (this.array[i] !== undefined) {
-      newArr.push(this.array[i]);
+    if (this.array[i] === undefined) {
+      undef++;
+      continue;
     }
+    newArray.push(this.array[i]);
   }
-  for (var i = 0; i < this.array.length; i++) {
-    emptyArr[i] = newArr[i];
-  }
-  this.array = emptyArr;
+  this.array = newArray.concat(new Array(undef));
 };
 
 AList.prototype.halfReverse = function () {
   if (this.size === 0) {
     throw new Error(ERRORS.empty);
   };
-};
-// var a = new AList()
-// a.add(2)
-// a.add(6)
-// a.add(4)
-// a.set(9, 7)
-// a.reverse()
-// console.log(a.array)
+  var
+    undef = this.array.length - this.size,
+    newArr = this.toArray(this.array),
+    firstPartLen = Math.floor(newArr.length / 2),
+    secondPartLen = newArr.length - firstPartLen,
+    reverseArr = []
 
-// console.log(a)
+  for (i = 0; i < secondPartLen; i++) {
+    reverseArr[i] = newArr[i + firstPartLen]
+  }
+  for (i = 0; i < firstPartLen; i++) {
+    reverseArr[i + secondPartLen] = newArr[i]
+  }
+  this.array = reverseArr.concat(new Array(undef))
+};
+
+IList.prototype.retainAll = function (retainArray) {
+  if (!Array.isArray(retainArray)) {
+    throw new Error(ERRORS.invalidArgument);
+  }
+  if (this.getSize() === 0) {
+    throw new Error(ERRORS.empty);
+  }
+  var array = [];
+  for (var m = 0; m < retainArray.length; m++) {
+    if (array.includes(retainArray[m])) continue;
+    array.push(retainArray[m]);
+  }
+  var newArr = [];
+  var newSize = 0;
+
+  for (var i = 0; i < this.array.length; i++) {
+    if (this.array[i] === undefined) {
+      continue;
+    };
+    for (var k = 0; k < array.length; k++) {
+      if (this.array[i] === array[k]) {
+        newArr.push(this.array[i]);
+        newSize++;
+        break;
+      };
+    };
+  };
+  this.array = newArr.concat(new Array(this.array.length - newSize));
+  this.size = newSize;
+};
+
+AList.prototype.removeAll = function (removeArray) {
+  if (this.getSize() === 0) {
+    throw new Error(ERRORS.empty);
+  }
+  if (!Array.isArray(removeArray)) {
+    throw new Error(ERRORS.invalidArgument);
+  }
+  var array = [];
+  for (var m = 0; m < removeArray.length; m++) {
+    if (array.includes(removeArray[m])) continue;
+    array.push(removeArray[m]);
+  }
+  var newArr = [];
+  var undef = 0;
+  for (var i = 0; i < this.array.length; i++) {
+    if (this.array[i] === undefined) {
+      undef++;
+      continue;
+    }
+    var count = 0;
+    for (var j = 0; j < array.length; j++) {
+      if (this.array[i] === array[j]) {
+        this.size--;
+        undef++;
+        count = 0;
+        break;
+      } else {
+        count++;
+      }
+    }
+    if (count !== 0) newArr.push(this.array[i]);
+  }
+  this.array = newArr.concat(new Array(undef));
+};
+
+//!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! no tests
+AList.prototype.print = function () {
+  for (var i = 0; i < this.array.length; i++) {
+    if (this.array[i] === undefined) continue
+    console.log(this.array[i])
+  }
+}
 
 module.exports = { AList, ERRORS }
+
+

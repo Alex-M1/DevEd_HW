@@ -372,3 +372,140 @@ describe("AList maxIndex", function () {
     expect(() => aList.reverse()).toThrow(ERRORS.empty);
   });
 });
+
+describe("AList halfreverse", function () {
+  it("should be defined ", function () {
+    var a = new AList();
+    expect(a.halfReverse).toBeDefined();
+  });
+  it("should be function", function () {
+    var a = new AList();
+    expect(typeof a.halfReverse).toBe("function");
+  });
+  it("should be halfreverse arr.len is odd and is undef", function () {
+    var a = new AList();
+    for (var i = 0; i < 9; i++) {
+      a.add(i);
+    }
+    a.halfReverse();
+    expect(a.array).toEqual([4, 5, 6, 7, 8, 0, 1, 2, 3, undefined]);
+  });
+  it("should be halfreverse arr.len is even and is undef", function () {
+    var a = new AList();
+    for (var i = 0; i < 8; i++) {
+      a.add(i);
+    }
+    a.halfReverse();
+    expect(a.array).toEqual([4, 5, 6, 7, 0, 1, 2, 3, undefined, undefined]);
+  });
+  it("should be halfreverse arr.len is even", function () {
+    var a = new AList([1, 2, 3, 4]);
+    a.halfReverse();
+    expect(a.array).toEqual([3, 4, 1, 2]);
+  });
+  it("should be halfreverse arr.len is odd", function () {
+    var a = new AList([1, 2, 3, 4, 5]);
+    a.halfReverse();
+    expect(a.array).toEqual([3, 4, 5, 1, 2]);
+  });
+  it("should be empty clollection", function () {
+    var aList = new AList();
+    expect(() => aList.halfReverse()).toThrow(ERRORS.empty);
+  });
+});
+
+describe("AList retainAll", function () {
+  it("should be defined ", function () {
+    var a = new AList();
+    expect(a.retainAll).toBeDefined();
+  });
+  it("should be function", function () {
+    var a = new AList();
+    expect(typeof a.retainAll).toBe("function");
+  });
+  it("should be empty clollection", function () {
+    var aList = new AList();
+    expect(() => aList.retainAll([1, 2])).toThrow(ERRORS.empty);
+  });
+  it("should be arg !== arr", function () {
+    var aList = new AList([1, 2]);
+    expect(() => aList.retainAll(2, 3)).toThrow(ERRORS.invalidArgument);
+  });
+  it("should change collection ", function () {
+    var dead = new AList();
+    dead.add(1);
+    dead.add(2);
+    dead.add(3);
+    var testArray = dead.array;
+    var oldSize = dead.getSize();
+    dead.retainAll([1, 2, 3, 1]);
+    expect(dead.array).toEqual(testArray);
+    expect(dead.getSize()).toBe(oldSize);
+  });
+  it("should change collection ", function () {
+    var dead = new AList();
+    dead.add(1);
+    dead.add(2);
+    dead.add(3);
+    var testArray = [
+      1,
+      undefined,
+      undefined,
+      undefined,
+      undefined,
+      undefined,
+      undefined,
+      undefined,
+      undefined,
+      undefined,
+    ];
+    var oldSize = dead.getSize();
+    dead.retainAll([5, 6, 1]);
+    expect(dead.array).toEqual(testArray);
+    expect(dead.getSize()).not.toBe(oldSize);
+    expect(dead.getSize()).toBe(1);
+  });
+});
+
+describe("AList removeAll", function () {
+  it("should be defined ", function () {
+    var a = new AList();
+    expect(a.removeAll).toBeDefined();
+  });
+  it("should be function", function () {
+    var a = new AList();
+    expect(typeof a.removeAll).toBe("function");
+  });
+  it("should be empty clollection", function () {
+    var aList = new AList();
+    expect(() => aList.removeAll([1, 2])).toThrow(ERRORS.empty);
+  });
+  it("should be arg !== arr", function () {
+    var aList = new AList([1, 2]);
+    expect(() => aList.removeAll(2, 3)).toThrow(ERRORS.invalidArgument);
+  });
+  it("should not change collection ", function () {
+    var dead = new AList();
+    dead.add(1);
+    dead.add(2);
+    dead.add(3);
+    var testArray = dead.array;
+    var oldSize = dead.getSize();
+    dead.removeAll([4, 5, 6, 4]);
+    expect(dead.array).toEqual(testArray);
+    expect(dead.getSize()).toBe(oldSize);
+  });
+  it("should change collection ", function () {
+    var dead = new AList();
+    dead.add(1);
+    dead.add(2);
+    dead.add(3);
+    var testArray = new Array(10);
+    testArray.fill(undefined);
+    var oldSize = dead.getSize();
+    dead.removeAll([1, 2, 3]);
+    expect(dead.array).toEqual(testArray);
+    expect(dead.getSize()).not.toBe(oldSize);
+    expect(dead.getSize()).toBe(0);
+  });
+});
