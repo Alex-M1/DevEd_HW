@@ -1,7 +1,6 @@
 const path = require('path')
 const HTMLWebpackPlugin = require('html-webpack-plugin')
 const { CleanWebpackPlugin } = require('clean-webpack-plugin')
-const CopyWebpackPlugin = require('copy-webpack-plugin')
 const MiniCssExtractPlugin = require('mini-css-extract-plugin')
 const OptimizeCssAssetWebpackPlugin = require('optimize-css-assets-webpack-plugin')
 const TerserWebpackPlugin = require('terser-webpack-plugin')
@@ -88,14 +87,6 @@ const plugins = () => {
             }
         }),
         new CleanWebpackPlugin(),
-        // new CopyWebpackPlugin(
-        //     [
-        //         {
-        //             from: path.resolve(__dirname, 'src/img'),
-        //             to: path.resolve(__dirname, 'dist/img')
-        //         }
-        //     ]
-        // ),
 
         new MiniCssExtractPlugin({
             filename: filename('css')

@@ -6,9 +6,7 @@ export default class Controller {
   }
 
   move = () => {
-    setInterval(() => {
-      this.view.rerender()
-    }, TIMER)
+    this.view.rerender()
   }
 
 }

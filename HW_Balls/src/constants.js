@@ -6,3 +6,5 @@ export const
   MIN_SPEED = 10,
   MAX_SPEED = 30,
   TIMER = 30
+
+

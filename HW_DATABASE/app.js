@@ -8,6 +8,7 @@ const connection = mysql.createConnection({
   options: { trustedConnection: true },
   database: 'baza_dannih'
 });
+
 function getData(connection, query) {
   connection.query(query, (err, result) => {
     if (err) throw err;
