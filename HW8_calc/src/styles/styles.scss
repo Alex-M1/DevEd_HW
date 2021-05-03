@@ -37,9 +37,20 @@ body{
     text-align: right;
     padding: 10px;
   }
+  &__values{
+    color: #9e9e9e;
+    text-align: right;
+    padding: 10px;
+  }
   &__buttons{
     display: grid;
+    grid-gap: 5px;
+  }
+  &__buttons-simple{
     grid-template-columns: 1fr 1fr 1fr 1fr;
+  }
+  &__buttons-eng{
+    grid-template-columns: repeat(7, 1fr);
   }
   &__btn{
     width: 60px;
