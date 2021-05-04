@@ -1,5 +1,5 @@
-import { Simple, Engeneer } from './js'
-import './styles/styles.scss'
+import { Simple, Engeneer } from './js';
+import './styles/styles.scss';
 
 window.addEventListener('DOMContentLoaded', function () {
   var options = {
@@ -9,6 +9,6 @@ window.addEventListener('DOMContentLoaded', function () {
   };
   var calculator = new Simple(options);
   // calculator.render()
-  var engeneer = new Engeneer(options)
-  engeneer.render()
-})
+  var engeneer = new Engeneer(options);
+  engeneer.render();
+});

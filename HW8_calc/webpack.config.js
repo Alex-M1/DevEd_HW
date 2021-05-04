@@ -1,32 +1,22 @@
-const path = require('path')
-const HTMLWebpackPlugin = require('html-webpack-plugin')
-const { CleanWebpackPlugin } = require('clean-webpack-plugin')
-const MiniCssExtractPlugin = require('mini-css-extract-plugin')
-const OptimizeCssAssetWebpackPlugin = require('optimize-css-assets-webpack-plugin')
-const TerserWebpackPlugin = require('terser-webpack-plugin')
-const { BundleAnalyzerPlugin } = require('webpack-bundle-analyzer')
+const path = require('path');
+const HTMLWebpackPlugin = require('html-webpack-plugin');
+const { CleanWebpackPlugin } = require('clean-webpack-plugin');
+const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 
-const isDev = process.env.NODE_ENV === 'development'
-const isProd = !isDev
+const isDev = process.env.NODE_ENV === 'development';
+const isProd = !isDev;
 
 const optimization = () => {
     const config = {
         splitChunks: {
             chunks: 'all'
         }
-    }
 
-    if (isProd) {
-        config.minimizer = [
-            new OptimizeCssAssetWebpackPlugin(),
-            new TerserWebpackPlugin()
-        ]
-    }
+    };
+    return config;
+};
 
-    return config
-}
-
-const filename = ext => isDev ? `[name].${ext}` : `[name].[hash].${ext}`
+const filename = ext => isDev ? `[name].${ext}` : `[name].[hash].${ext}`;
 
 const cssLoaders = extra => {
     const loaders = [
@@ -38,14 +28,14 @@ const cssLoaders = extra => {
             },
         },
         'css-loader'
-    ]
+    ];
 
     if (extra) {
-        loaders.push(extra)
+        loaders.push(extra);
     }
 
-    return loaders
-}
+    return loaders;
+};
 
 const babelOptions = presets => {
     const opts = {
@@ -53,30 +43,31 @@ const babelOptions = presets => {
             '@babel/preset-env'
         ],
         plugins: [
-            '@babel/plugin-proposal-class-properties'
+            '@babel/plugin-proposal-class-properties',
+            '@babel/plugin-transform-modules-commonjs',
         ]
-    }
+    };
 
     if (presets) {
         presets.forEach(preset => {
-            opts.presets.push(preset)
-        })
+            opts.presets.push(preset);
+        });
 
     }
 
-    return opts
-}
+    return opts;
+};
 
 
 const jsLoaders = () => {
     const loaders = [{
         loader: 'babel-loader',
         options: babelOptions()
-    }]
+    }];
 
 
-    return loaders
-}
+    return loaders;
+};
 
 const plugins = () => {
     const base = [
@@ -90,14 +81,9 @@ const plugins = () => {
         new MiniCssExtractPlugin({
             filename: filename('css')
         })
-    ]
-
-    if (isProd) {
-        base.push(new BundleAnalyzerPlugin())
-    }
-
-    return base
-}
+    ];
+    return base;
+};
 
 module.exports = {
     context: path.resolve(__dirname, 'src'),
@@ -110,7 +96,7 @@ module.exports = {
         path: path.resolve(__dirname, 'dist')
     },
     resolve: {
-        extensions: ['.js', '.json', '.ts'],
+        extensions: ['.js', '.json'],
     },
     optimization: optimization(),
     devServer: {
@@ -140,25 +126,10 @@ module.exports = {
                 ]
             },
             {
-                test: /\.(png|jpe?g|svg|gif)$/,
-                loader: 'file-loader',
-                options: {
-                    name: '[path][name].[ext]',
-                }
-
-            },
-            {
-                test: /\.(ttf|woff|woff2|eot)$/,
-                loader: 'file-loader',
-                options: {
-                    name: '[path][name].[ext]',
-                }
-            },
-            {
                 test: /\.js$/,
                 exclude: /node_modules/,
                 use: jsLoaders()
             }
         ]
     }
-}
+};

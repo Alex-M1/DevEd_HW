@@ -7,9 +7,9 @@ function Simple({ calcBtns, display, values }) {
   this.current = '0';
   this.sign = null;
 
-  this.addClass = function (el, className) { el.classList.add(className) };
-  this.removeClass = function (el, className) { el.classList.remove(className) };
-  this.setDisplay = function (target = this.current) { this.display.textContent = target };
+  this.addClass = function (el, className) { el.classList.add(className); };
+  this.removeClass = function (el, className) { el.classList.remove(className); };
+  this.setDisplay = function (target = this.current) { this.display.textContent = target; };
 }
 
 Simple.prototype.buttonEvent = function (e) {
@@ -42,7 +42,7 @@ Simple.prototype.buttonEvent = function (e) {
   }
   else if (targetContent === '%') {
     if (this.current !== '0') {
-      this.percent()
+      this.percent();
     }
   }
   else if (targetContent === '=') {
@@ -60,49 +60,49 @@ Simple.prototype.buttonEvent = function (e) {
     return;
   }
   else if (targetContent === '<>') {
-    this.renderEngeneer()
+    this.renderEngeneer();
   }
   this.operation(targetContent);
-}
+};
 
 Simple.prototype.reset = function () {
   this.memory = '0';
   this.current = '0';
   this.sign = null;
-}
+};
 
 Simple.prototype.operationHelper = function (sign) {
-  this.sign = sign
+  this.sign = sign;
   this.memory = this.current;
-  this.current = '0'
-  this.values.textContent = this.memory + this.sign
-}
+  this.current = '0';
+  this.values.textContent = this.memory + this.sign;
+};
 
 Simple.prototype.operation = function (sign) {
   ['+', '-', '*', '/'].forEach(function (el) {
     if (el === sign) {
       if (this.sign !== null) {
         this.current = eval(this.memory + this.sign + this.current);
-        this.setDisplay()
-        this.operationHelper(sign)
+        this.setDisplay();
+        this.operationHelper(sign);
       }
       else {
-        this.operationHelper(sign)
+        this.operationHelper(sign);
       }
     }
-  }.bind(this))
-}
+  }.bind(this));
+};
 
 Simple.prototype.percent = function () {
   if (this.sign === '+' || this.sign === '-') {
-    this.current = (+this.memory / 100 * this.current).toString()
+    this.current = (+this.memory / 100 * this.current).toString();
     this.setDisplay();
   }
   else {
-    this.current = (+this.memory / 100).toString()
+    this.current = (+this.memory / 100).toString();
     this.setDisplay();
   }
-}
+};
 
 Simple.prototype.render = function () {
   var calcButtons =
@@ -113,8 +113,8 @@ Simple.prototype.render = function () {
       1, 2, 3, '+',
       '<>', 0, '.', '='
     ];
-  this.removeClass(this.calculatorButtons, 'calculator__buttons-eng')
-  this.addClass(this.calculatorButtons, 'calculator__buttons-simple')
+  this.removeClass(this.calculatorButtons, 'calculator__buttons-eng');
+  this.addClass(this.calculatorButtons, 'calculator__buttons-simple');
   for (var i = 0; i < calcButtons.length; i++) {
     var button = document.createElement('button');
     button.addEventListener('click', this.buttonEvent.bind(this));
@@ -131,43 +131,6 @@ Simple.prototype.render = function () {
     };
     this.calculatorButtons.appendChild(button);
   };
-}
+};
 
 export default Simple;
-
-
-// Calculator.prototype.buttonEvent = function (e) {
-//   var
-//     displayContent = this.display.textContent,
-//     targetContent = e.target.textContent;
-
-//   if (targetContent === '.') {
-//     if (displayContent.includes('.')) return;
-//     this.display.textContent += targetContent;
-//   }
-//   else if (displayContent === '0') {
-//     this.display.textContent = targetContent;
-//   }
-//   else if (typeof targetContent === 'number' || !Number.isNaN(+targetContent)) {
-//     this.isNumber = true;
-//     this.display.textContent += targetContent;
-//   }
-//   else if (targetContent === '=') {
-//     this.isNumber = true;
-//     this.display.textContent = eval(displayContent);
-//   }
-//   else if (targetContent === 'AC') {
-//     this.isNumber = true;
-//     this.display.textContent = 0;
-//   }
-//   else if (targetContent === '%') {
-
-//   }
-//   else if (targetContent === '+/-') {
-
-//   }
-//   else if (Number.isNaN(+targetContent) && this.isNumber) {
-//     this.isNumber = false;
-//     this.display.textContent += targetContent;
-//   }
-// }

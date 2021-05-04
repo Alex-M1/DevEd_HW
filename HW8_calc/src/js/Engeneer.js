@@ -5,93 +5,109 @@ function Engeneer({ calcBtns, display, values }) {
 
   this.current = '0';
   this.isNumber = false;
-  this.memory = '0'
+  this.memory = '0';
 
-  this.addClass = function (el, className) { el.classList.add(className) };
-  this.removeClass = function (el, className) { el.classList.remove(className) };
-  this.setDisplay = function (target = this.current) { this.display.textContent = target };
-  this.setValue = function (value) { this.values.textContent = value };
-  this.setIsNum = function (boolean = true) { this.isNumber = boolean }
+  this.addClass = function (el, className) { el.classList.add(className); };
+  this.removeClass = function (el, className) { el.classList.remove(className); };
+  this.setDisplay = function (target = this.current) { this.display.textContent = target; };
+  this.setValue = function (value) { this.values.textContent = value; };
+  this.setIsNum = function (boolean = true) { this.isNumber = boolean; };
 }
 //!!!!!setIsNum - ничего не делает!!!!!!
 
 
 Engeneer.prototype.buttonEvent = function (e) {
-  var
-    target = e.target.textContent,
-    display = this.display.textContent,
-    values = this.values.textContent,
-    isNan = Number.isNaN(+target)
+  var target = e.target.textContent;
+  this.addNumbers(target);
+  this.reset(target);
+  this.backSpace(target);
+  this.pow(target);
+  this.setNegative(target);
+  this.equal(target);
+  this.mathOperations(target);
+};
 
+Engeneer.prototype.brackets = function (target) {
+
+};
+
+Engeneer.prototype.reset = function (target) {
+  if (target === 'AC') {
+    this.setIsNum(false);
+    this.setDisplay('0');
+    this.setValue('0');
+    this.current = '0';
+  }
+};
+
+Engeneer.prototype.addNumbers = function (target) {
+  var isNan = Number.isNaN(+target);
   if (this.current === '0' && !isNan) {
-    this.setIsNum()
+    this.setIsNum();
     this.current = target;
     this.setDisplay();
   }
   else if (!isNan) {
-    this.setIsNum()
+    this.setIsNum();
     this.current += target;
     this.setDisplay();
   }
-  else if (target === 'AC') {
-    this.setIsNum(false);
-    this.setDisplay('0');
-    this.setValue('0')
-    this.current = '0';
-  }
-  this.backSpace(target)
-  this.pow(target)
-  this.setNegative(target)
-  this.equal(target)
-  this.mathOperations(target)
-}
+};
 
 Engeneer.prototype.pow = function (target) {
-  if (target === 'x^2') {
-    this.setDisplay(this.current ** 2)
-    this.current = `${this.current} ^ 2`
+  if (!this.display.textContent.includes('^')) {
+    if (target === 'x^2') {
+      this.current = `${this.current}^2`;
+      this.setDisplay(this.current);
+    }
+    else if (target === 'x^y') {
+      this.current = `${this.current}^`;
+      this.setDisplay(this.current);
+    }
+    else if (target === '10^x') {
+      this.current = `10^${this.current}`;
+      this.setDisplay(this.current);
+    }
   }
-  else if (target === 'x^y') {
-
-  }
-}
+};
 
 Engeneer.prototype.backSpace = function (target) {
   var display = this.display.textContent;
   if (target === '🠔') {
     if (display.length === 1) {
-      this.current = '0'
-      this.setDisplay()
+      this.current = '0';
+      this.setDisplay();
     }
     else {
-      this.current = display.substr(0, display.length - 1)
+      this.current = display.substr(0, display.length - 1);
       this.setDisplay();
     }
   }
-}
+};
 
 Engeneer.prototype.setNegative = function (target) {
   if (target === '+/-') {
-    this.current = -(+this.display.textContent)
-    this.setDisplay()
+    this.current = -(+this.display.textContent);
+    this.setDisplay();
   }
-}
+};
 
 Engeneer.prototype.equal = function (target) {
   if (target === '=' && this.current !== '0') {
-    this.setDisplay(eval(this.values.textContent + this.current));
-    this.setValue(eval(this.values.textContent + this.current));
-    this.setIsNum(false)
+    this.setDisplay(eval(this.findPow(this.values.textContent) + this.findPow(this.display.textContent)));
+    this.setValue(eval(this.findPow(this.values.textContent) + this.findPow(this.current)));
+    this.setIsNum(false);
     this.current = '=';
   }
-}
+};
 
 Engeneer.prototype.mathOperations = function (sign) {
   ['+', '-', '*', '/'].forEach(function (el) {
     if (el === sign) {
       if (this.values.textContent === '0') {
-        this.setIsNum(false)
+        this.setIsNum(false);
         this.setValue(this.current + sign);
+        this.setDisplay(eval(this.findPow(this.display.textContent)));
         this.current = '0';
       }
       else if (this.current === '=') {
@@ -101,15 +117,19 @@ Engeneer.prototype.mathOperations = function (sign) {
         this.current = '0';
       }
       else {
-        this.setIsNum(false)
+        this.setIsNum(false);
         this.current = this.display.textContent;
-        this.setDisplay(eval(this.values.textContent + this.current));
+        this.setDisplay(eval(this.findPow(this.values.textContent) + this.findPow(this.current)));
         this.setValue(this.values.textContent + this.current + sign);
         this.current = '0';
       }
     }
-  }.bind(this))
-}
+  }.bind(this));
+};
+
+Engeneer.prototype.findPow = function (el) {
+  return el.replaceAll('^', '**');
+};
 
 Engeneer.prototype.render = function () {
   var calcButtons =
@@ -138,7 +158,7 @@ Engeneer.prototype.render = function () {
     };
     this.calculatorButtons.appendChild(button);
   };
-}
+};
 
 export default Engeneer;
 
