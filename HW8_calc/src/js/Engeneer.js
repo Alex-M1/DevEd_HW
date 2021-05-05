@@ -5,7 +5,9 @@ function Engeneer({ calcBtns, display, values }) {
 
   this.current = '0';
   this.isNumber = false;
+
   this.memory = '0';
+  this.bracketsQuantity = 0;
 
   this.addClass = function (el, className) { el.classList.add(className); };
   this.removeClass = function (el, className) { el.classList.remove(className); };
@@ -19,16 +21,36 @@ function Engeneer({ calcBtns, display, values }) {
 Engeneer.prototype.buttonEvent = function (e) {
   var target = e.target.textContent;
   this.addNumbers(target);
+  this.setDot(target);
   this.reset(target);
   this.backSpace(target);
+  this.brackets(target);
   this.pow(target);
   this.setNegative(target);
   this.equal(target);
   this.mathOperations(target);
 };
 
-Engeneer.prototype.brackets = function (target) {
+Engeneer.prototype.setDot = function (target) {
+  if (target === '.') {
+    if (this.display.textContent.includes('.')) return;
+    this.current += target;
+    this.setDisplay(this.current);
+  }
+};
 
+Engeneer.prototype.brackets = function (target) {
+  // if (target === '(') {
+  //   this.bracketsQuantity++;
+  //   this.setValue(this.values.textContent + target);
+  // }
+  // else if (target === ')' || this.bracketsQuantity === 0) {
+  //   return false;
+  // }
+  // else if (target === ')') {
+  //   this.bracketsQuantity--;
+  //   this.setValue(this.values.textContent + target);
+  // }
 };
 
 Engeneer.prototype.reset = function (target) {
@@ -116,6 +138,9 @@ Engeneer.prototype.mathOperations = function (sign) {
         this.setDisplay(this.display.textContent);
         this.current = '0';
       }
+      // else if (this.bracketsQuantity) {
+
+      // }
       else {
         this.setIsNum(false);
         this.current = this.display.textContent;
@@ -161,58 +186,3 @@ Engeneer.prototype.render = function () {
 };
 
 export default Engeneer;
-
-
-// Engeneer.prototype.buttonEvent = function (e) {
-//   var
-//     target = e.target.textContent,
-//     display = this.display.textContent,
-//     values = this.values.textContent;
-
-//   if (target === '.') {
-//     if (display.includes('.')) return;
-//     this.display.textContent += target;
-//   }
-//   else if (display === '0' && !Number.isNaN(+target)) {
-//     this.display.textContent = target;
-//     this.current = target;
-//   }
-//   else if (typeof +target === 'number' && !Number.isNaN(+target)) {
-//     this.isNumber = true;
-//     this.display.textContent += target;
-//     this.current = target;
-//   }
-//   else if (target === '=') {
-//     this.isNumber = true;
-//     this.display.textContent = eval(values + display);
-//     this.values.textContent = eval(values + display);
-//   }
-//   else if (target === 'AC') {
-//     this.isNumber = true;
-//     this.display.textContent = 0;
-//   }
-//   else if (target === '🠔') {
-//     display.length === 1
-//       ? this.setDisplay('0')
-//       : this.setDisplay(display.substr(0, display.length - 1));
-//   }
-//   else if (target === '+/-') {
-//     this.current = -(+this.current);
-//     this.setDisplay();
-//   }
-
-//   this.operations(target)
-// }
-
-// Engeneer.prototype.operations = function (target) {
-//   ['+', '-', '*', '/'].forEach(function (el) {
-//     if (el === target) {
-//       if (this.values !== '0') {
-//         this.isNumber = false;
-//         this.values.textContent += this.current + target;
-//         this.setDisplay(eval(this.values.textContent))
-//         this.current = '0'
-//       }
-//     }
-//   }.bind(this))
-// }
