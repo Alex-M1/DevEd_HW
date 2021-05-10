@@ -1,6 +1,5 @@
-export const
-  dom =
-    `
+dom =
+  `
     <canvas width="500" height="500"></canvas>
     <div class="setting">
       <div>

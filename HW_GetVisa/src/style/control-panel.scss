@@ -1,0 +1,13 @@
+.control-panel{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 30px;
+  &__row{
+    margin-bottom: 10px;
+    button{
+      width: 100px;
+      margin-right: 10px;
+    }
+  }
+}

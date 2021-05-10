@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+  <div class="container">
+    <div class="app">
+      <div class="candidate">
+        <div class="candidate__row candidate__name">
+          <span>Name</span>
+          <input type="text" placeholder="Enter name..." id="entName">
+          <button class="btn candidate__row-btn" id="genName">Generate</button>
+        </div>
+        <div class="candidate__row candidate__balance">
+          <span>Balance</span>
+          <input type="text" placeholder="Enter balance..." id="entBalance">
+          <button class="btn candidate__row-btn" id="genBalance">Generate</button>
+        </div>
+        <div class="candidate__row candidate__age">
+          <span>Age</span>
+          <input type="text" placeholder="Enter age..." id="entAge">
+          <button class="btn candidate__row-btn" id="genAge">Generate</button>
+        </div>
+        <div class="candidate__row candidate__documents">
+          <span>Documents</span>
+          <input type="text" placeholder="Enter documents..." id="entDocuments">
+          <button class="btn candidate__row-btn" id="genDocuments">Generate</button>
+        </div>
+        <div class="candidate__row candidate__english">
+          <span>English level</span>
+          <input type="text" placeholder="Enter english level..." id="entEn">
+          <button class="btn candidate__row-btn" id="genEn">Generate</button>
+        </div>
+      </div>
+      <div class="control-panel">
+        <div class="control-panel__row">
+          <button class="btn control-panel__btn" id="generateAll">Generate All</button>
+          <button class="btn control-panel__btn" id="add">Add Candidate</button>
+          <button class="btn control-panel__btn" id="init">Init</button>
+        </div>
+        <div class="control-panel__row">
+          <button class="btn control-panel__btn" id="race">Race</button>
+          <button class="btn control-panel__btn" id="clear">Clear</button>
+        </div>
+      </div>
+      <canvas width="500" height="500"></canvas>
+    </div>
+
+  </div>
+</body>
+
+</html>
