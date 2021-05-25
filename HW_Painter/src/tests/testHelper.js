@@ -1,4 +1,4 @@
-dom =
+export const dom =
   `
     <canvas width="500" height="500"></canvas>
     <div class="setting">

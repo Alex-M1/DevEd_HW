@@ -94,15 +94,11 @@ export default class Race {
 
   generateAll = (id) => {
     if (id === 'generateAll') {
-      for (let i = 0; i < 5; i++) {
-        this.candidateList.push(new this.Candidate({
-          name: this.generateName(names),
-          balance: this.generateBalance(),
-          age: this.generateAge(),
-          documents: this.generateDocs(documents),
-          enLvl: this.generateEnLvl(enLvlValid, enLvlInvalid)
-        }));
-      }
+      this.entName.value = this.generateName(names);
+      this.entBalance.value = this.generateBalance();
+      this.entAge.value = this.generateAge();
+      this.entDocs.value = this.generateDocs(documents);
+      this.entEnLvl.value = this.generateEnLvl(enLvlValid, enLvlInvalid);
     }
 
   }
