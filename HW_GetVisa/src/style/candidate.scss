@@ -17,4 +17,38 @@
       color: $color;
     }
   }
+  &__documents{
+    width: 406px;
+    &-document{
+      display: flex;
+      justify-content: space-between;
+      margin-bottom: 5px;
+      label{
+        display: inline-block;
+        color: #fff;
+        width: 100%;
+        user-select: none;  
+      } 
+      label,input{
+        cursor: pointer;
+      }
+    }
+  }
+  &__english{
+    width: 406px;
+  }
+  &__message{
+    margin-top: 20px;
+    font-size: 18px;
+    color: #ff7350;
+    opacity: 0;
+    visibility: hidden;
+    transition: 0.4s opacity, 0.4s visibility;
+    &-visible {
+      opacity: 1!important;
+      visibility: visible!important;
+      transition: 0.55s opacity, 0.55s visibility;
+    }
+  }
 }
+

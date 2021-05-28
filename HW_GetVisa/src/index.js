@@ -1,6 +1,7 @@
 import Candidate from './js/Candidate';
 import { inputSelectors } from './js/constants';
 import Race from './js/Race';
+import View from './js/View';
 import './style/index.scss';
 
 window.addEventListener('DOMContentLoaded', () => {
@@ -9,6 +10,11 @@ window.addEventListener('DOMContentLoaded', () => {
     controlSelector: '.control-panel'
   };
 
-  const race = new Race({ ...raceSelectors, inputSelectors, Candidate });
-  console.log(race);
+
+  new Race({ ...raceSelectors, inputSelectors, Candidate, View });
+
+
+
 });
+
+
