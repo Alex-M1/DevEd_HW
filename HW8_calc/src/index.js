@@ -1,4 +1,4 @@
-import { Simple, Engeneer } from './js';
+import { Simple, Engeneer, Controller } from './js';
 import './styles/styles.scss';
 
 window.addEventListener('DOMContentLoaded', function () {
@@ -7,8 +7,9 @@ window.addEventListener('DOMContentLoaded', function () {
     calcBtns: '.calculator__buttons',
     display: '.calculator__display',
   };
-  var calculator = new Simple(options);
-  // calculator.render()
+  var simple = new Simple(options);
   var engeneer = new Engeneer(options);
-  engeneer.render();
+
+  var controller = new Controller(simple, engeneer, options.calcBtns);
+  controller.init();
 });

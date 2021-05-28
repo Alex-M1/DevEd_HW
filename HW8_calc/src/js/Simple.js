@@ -7,8 +7,6 @@ function Simple({ calcBtns, display, values }) {
   this.current = '0';
   this.sign = null;
 
-  this.addClass = function (el, className) { el.classList.add(className); };
-  this.removeClass = function (el, className) { el.classList.remove(className); };
   this.setDisplay = function (target = this.current) { this.display.textContent = target; };
 }
 
@@ -59,9 +57,6 @@ Simple.prototype.buttonEvent = function (e) {
     this.reset();
     return;
   }
-  else if (targetContent === '<>') {
-    this.renderEngeneer();
-  }
   this.operation(targetContent);
 };
 
@@ -102,35 +97,6 @@ Simple.prototype.percent = function () {
     this.current = (+this.memory / 100).toString();
     this.setDisplay();
   }
-};
-
-Simple.prototype.render = function () {
-  var calcButtons =
-    [
-      'AC', '+/-', '%', '/',
-      7, 8, 9, '*',
-      4, 5, 6, '-',
-      1, 2, 3, '+',
-      '<>', 0, '.', '='
-    ];
-  this.removeClass(this.calculatorButtons, 'calculator__buttons-eng');
-  this.addClass(this.calculatorButtons, 'calculator__buttons-simple');
-  for (var i = 0; i < calcButtons.length; i++) {
-    var button = document.createElement('button');
-    button.addEventListener('click', this.buttonEvent.bind(this));
-    button.textContent = calcButtons[i];
-    this.addClass(button, 'calculator__btn');
-    if ((i + 1) % 4 === 0 || i === calcButtons.length - 1) {
-      this.addClass(button, 'left-btn');
-    }
-    else if (i < 3) {
-      this.addClass(button, 'secondary-btn');
-    }
-    else {
-      this.addClass(button, 'main-btn');
-    };
-    this.calculatorButtons.appendChild(button);
-  };
 };
 
 export default Simple;
