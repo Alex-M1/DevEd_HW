@@ -2,7 +2,6 @@ require('dotenv').config()
 const express = require('express')
 const AWS = require('aws-sdk')
 const multer = require('multer')
-const fileuploadMiddleWare = require('express-fileupload')
 
 const imageUpload = require('./helpers/imageUpload')
 const fileUpload = require('./helpers/fileUpload')

@@ -3,9 +3,8 @@ import PropTypes from 'prop-types';
 import Button from './styles';
 
 function CustomBtn({ title, clickFunc }) {
-  const handleClick = () => clickFunc();
   return (
-    <Button onClick={handleClick}>{title}</Button>
+    <Button onClick={clickFunc}>{title}</Button>
   );
 }
 

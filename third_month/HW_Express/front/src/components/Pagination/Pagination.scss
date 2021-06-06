@@ -1,0 +1,23 @@
+.pagination{
+  display: flex;
+  list-style-type: none;
+  width: 100%;
+  justify-content: center;
+  padding-bottom: 30px;
+  li{
+    display: inline-block;
+    background: #a2c0df;
+    color:#04478a;
+    margin-right: 5px;
+    cursor: pointer;
+    padding: 5px 10px;
+    border: 1px solid black;
+    border-radius: 3px;
+    text-align: center;
+
+  }
+  li.active{
+    background: #1976d2;
+    color: #fff;
+  }
+}

@@ -3,16 +3,18 @@ import { withRouter } from 'react-router';
 import { url } from '../../helpers/constants';
 
 function Book(props) {
+  const [book, setBook] = useState({});
   const id = props.match.params.id;
-  const [data, setData] = useState([]);
-  const getData = async () => {
-    const res = await fetch(url);
-    const resData = await res.json();
-    setData(resData);
+  const getBookData = async () => {
+    const res = await fetch(`${url}?id=${id}`);
+    const data = await res.json();
+    setBook(data.books[0]);
   };
-  useEffect(() => getData(), []);
+  useEffect(() => {
+    getBookData();
+  }, []);
 
-  const { title, author, bookDescr, date, image } = data;
+  const { title, author, bookDescr, date, image } = book;
 
   return (
     <div className="conatainer">
@@ -22,7 +24,6 @@ function Book(props) {
         <p>{date}</p>
         <p>{bookDescr}</p>
       </div>
-
     </div>
   );
 }

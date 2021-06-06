@@ -1,5 +1,6 @@
 const express = require('express');
 const Controllers = require('./Controllers/Controllers');
+const { upload } = require('./helpers/awsConfig');
 
 const app = express();
 const PORT = process.env.PORT;
@@ -14,10 +15,14 @@ app.use((req, res, next) => {
 
 const books = new Controllers();
 
+
+app.get('/', books.getBooks);
+app.post('/', upload, books.postBooks);
+
 const connect = async () => {
   books.connect();
   app.listen(PORT, () => console.log('Server have been started on port', PORT));
 };
 
 connect();
-console.log(new Buffer());
+
