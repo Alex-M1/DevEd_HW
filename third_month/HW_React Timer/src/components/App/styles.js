@@ -1,12 +1,12 @@
-import styled from 'styled-components';
+import styled, { createGlobalStyle } from 'styled-components';
+import { themes } from '../../constants/theme';
 
-const Application = styled.main`
+export const Application = styled.main`
   display: flex;
   justify-content: center;
   padding: 20px;
 `;
-
-const AppContainer = styled.div`
+export const StAppContainer = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
@@ -18,11 +18,19 @@ const AppContainer = styled.div`
   padding: 10px;
 `;
 
-const Timer = styled.div`
-  padding-bottom: 5px;
-  font-size: 16px;
-`;
-const AppHead = styled.h1`
+export const StAppHead = styled.h1`
   font-size: 18px;
 `;
-export { Application, AppContainer, AppHead, Timer };
+
+export const GlobalStyle = createGlobalStyle`
+  *{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+
+  body{
+    background: ${(props) => themes[props.theme].mainBg};
+    color: ${(props) => themes[props.theme].color};
+  }
+`;

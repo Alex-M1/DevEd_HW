@@ -26,7 +26,6 @@ class Controllers {
     const id = req.query.id;
     let queryAll = 'SELECT * FROM books';
     if (id) queryAll = `SELECT * FROM books WHERE id = ${id}`;
-    console.log(id);
     try {
       const page = +req.query.page || 1;
       const range = page * 8;
@@ -52,6 +51,7 @@ class Controllers {
       this.client.query(queryCreate);
       this.#setResponse(res, 200, 'ok');
     } catch (err) {
+      console.log(err);
       this.#setResponse(res, 403, err);
     }
   }
@@ -80,6 +80,7 @@ class Controllers {
     }
   }
   imageUpload = async (req) => {
+    console.log(req);
     const myFile = req.file.originalname.split('.');
     const fileType = myFile[myFile.length - 1];
     const size1 = await sharp(req.file.buffer).resize({ width: 200, height: 306 }).toBuffer();
