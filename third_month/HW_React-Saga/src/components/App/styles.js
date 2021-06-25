@@ -1,4 +1,4 @@
-import { createGlobalStyle } from 'styled-components';
+import styled, { createGlobalStyle } from 'styled-components';
 
 export const GlobalStyle = createGlobalStyle`
   *{
@@ -11,4 +11,8 @@ export const GlobalStyle = createGlobalStyle`
     background: ${({ colors, theme }) => colors[theme].mainBg};
     color: ${({ colors, theme }) => colors[theme].color};
   }
+`;
+export const StContainer = styled.div`
+  max-width: 1140px;
+  margin: 0 auto;
 `;

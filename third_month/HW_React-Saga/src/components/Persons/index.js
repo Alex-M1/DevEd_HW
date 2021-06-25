@@ -1,8 +1,13 @@
 import { connect } from 'react-redux';
-import { getPerson } from '../../store/actions';
+import { getPerson, updatePerson, deletePerson } from '../../store/actions';
+import { persons } from '../../store/selectors';
 import Persons from './Persons';
 
+const mapStateToProps = (state) => ({
+  persons: persons(state),
+});
+
 const mapDispatchToProps = {
-  getPerson,
+  getPerson, updatePerson, deletePerson,
 };
-export default connect(null, mapDispatchToProps)(Persons);
+export default connect(mapStateToProps, mapDispatchToProps)(Persons);

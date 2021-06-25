@@ -20,3 +20,8 @@ export const modalVisible = createSelector(
   getStore,
   (state) => state.form.visible,
 );
+
+export const persons = createSelector(
+  getStore,
+  (state) => state.persons,
+);

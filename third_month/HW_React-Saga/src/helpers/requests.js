@@ -8,4 +8,5 @@ export const requests = {
       },
     });
   },
+  getRequest: (url, method = 'GET') => fetch(url, { method }),
 };
