@@ -1,15 +1,5 @@
 import styled from 'styled-components';
-
-const btnStyles = {
-  primary: {
-    bg: '#2189eb',
-    hoverBg: '#0071db',
-  },
-  cancel: {
-    bg: '#eb3434',
-    hoverBg: '#f51616',
-  },
-};
+import { btnStyles } from '../../../helpers';
 
 export const StButton = styled.button`
   background:${({ mode }) => btnStyles[mode].bg};

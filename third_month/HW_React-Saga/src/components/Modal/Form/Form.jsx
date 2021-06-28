@@ -6,6 +6,7 @@ function Form() {
   return (
     <StForm>
       <FormItem
+        isRef
         type="name"
         title="Имя"
         placeholder="Введите имя"

@@ -12,7 +12,7 @@ function Row({ isHead, _id, name, age, phone, email, company, updatePerson, dele
   const onDeleteClick = () => deletePerson(_id);
   return (
     <StRow >
-      <Cell onDoubleClick={onDblClick} updatePerson={updatePerson} id={_id} type="name">{name}</Cell>
+      <Cell onDblClick={onDblClick} updatePerson={updatePerson} id={_id} type="name">{name}</Cell>
       <Cell onDoubleClick={onDblClick} updatePerson={updatePerson} id={_id} type="age">{age}</Cell>
       <Cell onDoubleClick={onDblClick} updatePerson={updatePerson} id={_id} type="phone">{phone}</Cell>
       <Cell onDoubleClick={onDblClick} updatePerson={updatePerson} id={_id} type="email">{email}</Cell>

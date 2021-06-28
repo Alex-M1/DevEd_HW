@@ -3,6 +3,7 @@ import { createStore, applyMiddleware, compose } from 'redux';
 import createSagaMiddleware from 'redux-saga';
 import React from 'react';
 import { Provider } from 'react-redux';
+import './__tests__/testHelper';
 import App from './components/App';
 import reducer from './store/reducer';
 import { watcher } from './store/sagas';

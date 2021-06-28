@@ -1,0 +1,3 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Row Should match snapshot 1`] = `"<div class=\\"styled__StRow-sc-1gdbc6o-0 kdODGd\\"><div class=\\"styled__StCell-sc-1gdbc6o-1 cSMJMA\\">mockValue</div><div class=\\"styled__StCell-sc-1gdbc6o-1 cSMJMA\\">mockValue</div><div class=\\"styled__StCell-sc-1gdbc6o-1 cSMJMA\\">mockValue</div><div class=\\"styled__StCell-sc-1gdbc6o-1 cSMJMA\\">mockValue</div><div class=\\"styled__StCell-sc-1gdbc6o-1 cSMJMA\\">mockValue</div><span class=\\"styled__StDelete-sc-1gdbc6o-2 chhHJL\\">×</span></div>"`;

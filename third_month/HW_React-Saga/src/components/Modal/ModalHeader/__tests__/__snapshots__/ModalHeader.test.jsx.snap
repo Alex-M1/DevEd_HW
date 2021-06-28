@@ -1,0 +1,3 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`ModalHeader Should match snapshot 1`] = `"<div class=\\"styled__StModalHeader-sc-1ozqfyh-0 jmUcbk\\"><h1>Add person</h1><span>⨯</span></div>"`;

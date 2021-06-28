@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useMemo } from 'react';
 import PropTypes from 'prop-types';
 import Row from './Row/Row';
 import { StTable } from './styled';
@@ -7,6 +7,15 @@ function Persons({ persons, getPerson, updatePerson, deletePerson }) {
   useEffect(() => {
     getPerson();
   }, []);
+  const memoPesons = useMemo(() => {
+    return persons.map((el) => {
+      if (el._id) {
+        return <Row key={el._id} {...el} updatePerson={updatePerson} deletePerson={deletePerson} />;
+      }
+      return null;
+    });
+  }, [persons]);
+
   const tableHead = {
     name: 'Имя',
     age: 'Возраст',
@@ -17,7 +26,7 @@ function Persons({ persons, getPerson, updatePerson, deletePerson }) {
   return (
     <StTable>
       <Row {...tableHead} isHead />
-      {persons.map((el) => <Row key={el._id} {...el} updatePerson={updatePerson} deletePerson={deletePerson} />)}
+      {memoPesons}
     </StTable>
   );
 }

@@ -1,6 +1,6 @@
 import { SET_PERSONS, SET_INPUT_VALUE, SET_VISIBLE } from './actionTypes';
 
-const initialState = {
+export const initialState = {
   form: {
     name: '',
     age: '',

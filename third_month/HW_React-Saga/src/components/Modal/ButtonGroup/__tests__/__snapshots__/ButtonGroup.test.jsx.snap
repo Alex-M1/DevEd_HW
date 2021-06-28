@@ -1,0 +1,3 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`ButtonGroup Should match snapshot 1`] = `"<div class=\\"styled__StBtnGroup-c54mt-0 RBvzV\\"><button mode=\\"primary\\" class=\\"styled__StButton-iorpwz-0 GXmVc\\">Отправить</button><button mode=\\"cancel\\" class=\\"styled__StButton-iorpwz-0 nuamV\\">Отменить</button></div>"`;

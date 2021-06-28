@@ -1,0 +1,3 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Cell Should match snapshot 1`] = `"<div class=\\"styled__StCell-sc-1gdbc6o-1 cSMJMA\\">sadas</div>"`;
