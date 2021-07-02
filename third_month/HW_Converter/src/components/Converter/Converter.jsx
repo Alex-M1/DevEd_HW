@@ -12,7 +12,7 @@ function Converter({
   setPrimary,
   setSecondary,
   setInputValue,
-  setConvertLength,
+  onButtonClick,
 }) {
   return (
     <StConverter>
@@ -30,7 +30,7 @@ function Converter({
         onChange={setSecondary}
         readOnly
       />
-      <Button onClick={setConvertLength} />
+      <Button onClick={onButtonClick} />
     </StConverter>
   );
 }
@@ -46,5 +46,5 @@ Converter.propTypes = {
   setPrimary: PropTypes.func.isRequired,
   setSecondary: PropTypes.func.isRequired,
   setInputValue: PropTypes.func.isRequired,
-  setConvertLength: PropTypes.func.isRequired,
+  onButtonClick: PropTypes.func.isRequired,
 };

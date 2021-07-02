@@ -1,7 +1,7 @@
 import * as AT from './actionTypes';
 import { convert } from '../helpers/convert';
 
-const initialState = {
+export const initialState = {
   length: {
     primary: 'meters',
     secondary: 'meters',
@@ -42,15 +42,16 @@ export const reducer = (state = initialState, action) => {
           inputValue: action.value,
         },
       };
-    case AT.CONVERT_LENGTH:
+    case AT.SET_CONVERT:
       return {
         ...state,
-        length: {
-          ...state.length,
+        [action.valueType]: {
+          ...state[action.valueType],
           resultValue: convert(
-            state.length.inputValue,
-            state.length.primary,
-            state.length.secondary,
+            state[action.valueType].inputValue,
+            state[action.valueType].primary,
+            state[action.valueType].secondary,
+            action.value,
           ),
         },
       };

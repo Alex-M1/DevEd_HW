@@ -1,5 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import { StInput } from './styled';
 
 function Input({ value, onChange, readOnly = false }) {
   const handleInputChange = (e) => {
@@ -8,7 +9,7 @@ function Input({ value, onChange, readOnly = false }) {
     onChange(e.target.value);
   };
   return (
-    <input value={value} onChange={handleInputChange} readOnly={readOnly} />
+    <StInput value={value} onChange={handleInputChange} readOnly={readOnly} />
   );
 }
 

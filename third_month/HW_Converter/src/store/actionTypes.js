@@ -1,4 +1,6 @@
 export const PRIMARY_CHANGE = 'PRIMARY_CHANGE';
 export const SECONDARY_CHANGE = 'SECONDARY_CHANGE';
 export const SET_INPUT_VALUE = 'SET_INPUT_VALUE';
-export const CONVERT_LENGTH = 'CONVERT_LENGTH';
+export const SET_CONVERT = 'SET_CONVERT';
+
+export const GET_CURRENCY = 'GET_CURRENCY';

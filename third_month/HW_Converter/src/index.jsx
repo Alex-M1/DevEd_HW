@@ -1,13 +1,22 @@
 import React from 'react';
 import { render } from 'react-dom';
 import { Provider } from 'react-redux';
-import { createStore } from 'redux';
+import createSagaMiddleware from 'redux-saga';
+import { createStore, applyMiddleware, compose } from 'redux';
 import App from './components/App';
 import { reducer } from './store/reducer';
+import { watcher } from './store/sagas';
 
 const devTools = window?.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__();
-const store = createStore(reducer, devTools);
-
+const saga = createSagaMiddleware();
+const store = createStore(
+  reducer,
+  compose(
+    applyMiddleware(saga),
+    devTools,
+  ),
+);
+saga.run(watcher);
 render(
   <Provider store={store}>
     <App />

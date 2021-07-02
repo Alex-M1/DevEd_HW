@@ -1,11 +1,12 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import { StButton } from './styled';
 
 function Button({ onClick }) {
   return (
-    <button onClick={onClick}>
+    <StButton onClick={onClick}>
       Convert
-    </button>
+    </StButton>
   );
 }
 

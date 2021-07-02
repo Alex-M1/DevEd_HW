@@ -3,8 +3,7 @@ import Converter from '../Converter';
 
 function App() {
   const lengthValues = ['meters', 'yards', 'miles', 'versts', 'feet'];
-  const currencyValues = ['UAH', 'EUR', 'USD', 'RUR'];
-
+  const currencyValues = ['UAH', 'EUR', 'USD', 'RUB'];
   return (
     <div >
       < Converter type="length" values={lengthValues} />

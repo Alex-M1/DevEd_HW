@@ -1,5 +1,5 @@
 import { connect } from 'react-redux';
-import { setInputValue, setPrimary, setSecondary, setConvertLength } from '../../store/actions';
+import { setInputValue, setPrimary, setSecondary, setConvert, getCurrency } from '../../store/actions';
 import { getInputValue, getPrimaryValue, getResultValue, getSecondaryValue } from '../../store/selectors';
 import Converter from './Converter';
 
@@ -14,6 +14,12 @@ const mapDispatchToProps = (dispatch, props) => ({
   setPrimary: (value) => dispatch(setPrimary(props.type, value)),
   setSecondary: (value) => dispatch(setSecondary(props.type, value)),
   setInputValue: (value) => dispatch(setInputValue(props.type, value)),
-  setConvertLength: () => dispatch(setConvertLength()),
+  onButtonClick: () => {
+    if (props.type === 'length') {
+      dispatch(setConvert(props.type));
+    } else if (props.type === 'currency') {
+      dispatch(getCurrency());
+    }
+  },
 });
 export default connect(mapStateToProps, mapDispatchToProps)(Converter);
